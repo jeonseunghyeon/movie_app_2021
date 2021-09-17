@@ -1,5 +1,121 @@
 # 전승현 201840132 
 
+##  [09월 15일] 학습내용
+------
+
+<details>
+<summary>JSX</summary>
+
+1. 컴포넌트는 자바스크립트와 HTML을 조합한 JSX라는 문법을 사용해서 만든다.
+2. JSX의 문법은 JS와 HTML 문법의 조합한 것으로 사용하다 보면 자연스럽게 익힐 수 있다.
+
+</details>
+
+<details>
+<summary>Potato 컴포넌트 만들기</summary>
+
+1. src폴더 안에 Potato.js라는 이름의 새 파일을 만든다.
+2. 첫 글자는 반드시 대문자를 사용한다
+3. Import 구문을 입력해야 리액트가 JSX를 이해할 수 있으니 반드시 입력한다.
+
+~~~
+import React from 'react';
+~~~
+
+</details>
+
+
+<details>
+<summary>Potato()함수를 작성한다</summary>
+
+~~~
+import React from 'react';
+function Potato() {
+
+}
+~~~
+
+
+</details>
+
+<details>
+<summary>Potato 컴포넌트가 JSX를 반환하도록 만든다.</summary>
+
+~~~
+import React from 'react';
+function Potato() {
+    return <h3>I love potato</h3>;
+}
+~~~
+
+</details>
+
+<details>
+<summary>마지막 줄에 export 구문을 다음과 같이 추가한다.</summary>
+
+~~~
+import React from 'react';
+function Potato() {
+    return <h3>I love potato</h3>;
+}
+
+export default Potato;
+~~~
+
+</details>
+
+
+<details>
+<summary>Photo컴포넌트 사용하기.</summary>
+
+1. Export구문을 추가하면 다른 파일에서 해당 컴포넌트를 사용할 수 있다.
+2. 교재의 액션06 처럼 코딩하는 경우 오류가 발생한다.
+
+~~~
+ReactDOM.render(<App />, document.getElementById('root'));
+-> ReactDOM.render(<App /><Potato />, document.getElementById('root'));
+~~~
+
+</details>
+
+
+<details>
+<summary>props</summary>
+
+- Props란 컴포넌트에서 컴포넌트로 전달하는 데이터를 말한다. 함수의 매개변수 역할을 하는 것이다.<br>
+ 따라서 props를 사용하면 컴포넌트를 효율적으로 사용할 수 있다.
+
+
+</details>
+
+<details>
+<summary>map() 함수로 컴포넌트 많이 만들기</summary>
+
+1. 이제 앞서 만든 foodLike에 있는 데이터로 컴포넌트를 여러 개 만든다.
+2. 이때 사용되는 함수가 JS의 map()이다.
+3. 이번 절에서는 map()함수의 동작을 크롬 개발자 도구의 console을 통해 살펴본다
+
+</details>
+
+
+<details>
+<summary>import를 이용한 이미지 삽입 방법</summary>
+
+1. 교재에서의 이미지 삽입은 절대 경로를 사용했다. 상대 경로로 삽입할 때는 어떻게 하면 될까?
+2. 먼저 알아 둬야 할 것은 src폴더 내부에 이미지를 저장해야 한다는 것이다.
+3. 그리고 상대 경로 삽입 방법은 2가지가 있는데 한가지는 import를 사용하는 방법과 require를 사용하는 방법이다.
+4. 여기서는 import방법을 설명한다.
+5. img01은 별칭이고 실제 이미지의 위치는 /src/images/1.jpg이다. 반드시 src 아래 두어야 한다.
+6. 그리고 실제 사용한 때는 img01로 사용한다.
+
+~~~
+import img01 from './images/1.jpg'
+~~~
+</details>
+
+
+
+
 ##  [09월 08일] 학습내용
 -------
 <details>
