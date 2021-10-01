@@ -121,6 +121,28 @@ import React from 'react';
 
 </details>
 
+
+<details>
+<summary> state로 숫자 증감 기능 만들어 보기</summary>
+
+1. props는 정적인 데이터만 다룰 수 있다.
+2. state는 동적인 데이터를 다루기 위해 사용된다
+3. state는 class형 컴포넌트에서 사용된다.
+4. 기존의 App.js는 04-App.js로 이름을 바꾸고 새로운 App.js 파일을 생성한다.
+
+</details>
+
+<details>
+<summary> App클래스가 React.Component 클레스를 상속 받도록 하자. </summary>
+
+1. class를 `React.Component`로 상속받아 생성한다.
+2. `React.Component` 클래스는 500여 줄이 넘는 코드
+로 여러가지 기능이 이미 구현되어 있기 때문에 사용하
+기에 편리하다.
+3. import할 때 `{Component}`를 써주면 extends에서
+`React.`을 생략할 수 있다.
+
+</details>
 ##  [09월 15일] 학습내용
 ------
 
