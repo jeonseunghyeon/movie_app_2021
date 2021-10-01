@@ -1,5 +1,126 @@
 # 전승현 201840132 
 
+##  [09월 29일] 학습내용
+------
+
+<details>
+<summary>상대경로 이미지 삽입 방법</summary>
+
+1. 교재에서의 이미지 삽입은 절대 경로를 사용했다. 상대 경로로 삽입할 때는 어떻게 하면 될까?
+2. Import를 사용하는 방법도 있지만 이미지가 많을 경우는 코드가 길어져 적합하지 않다.
+3. public 폴더에 images폴더를 생성한다
+4. 그리고 필요한 곳에 
+~~~
+<img src=“image/[이미지 이름]”> 
+~~~
+형태로 태그를 작성하면 된다.
+
+</details>
+
+<details>
+<summary> 음식 앱에 prop-types 도입하기</summary>
+
+1. 정의한 props의 값이 컴포넌트에 제대로 전달되지 않으면 어떻게 해야 할까?
+2. Picture props에 {dish.image}가 아닌 {true}를 전달하면 어떻게 될까?
+3. 여러가지 이유로 원하는 대로 이미지 등이 나오지 않을 때 이를 검사할 수 있는 방법은 없을까?
+4.  이번 절에서는 이 검사 방법에 대해 알아 보도록 한다.
+
+~~~
+import React from 'react';
+~~~
+
+</details>
+
+
+<details>
+<summary>음식 데이터에 rating 추가하기</summary>
+
+1. • foodLike 배열의 각 요소에 rating(평점)을 추가한다
+2. • Rating props를 Food 컴포넌트에 전달하면서 이 값을 검사해 보기로 한다
+3. • 그러기 위해서는 props의 자료형을 검사할 수 있도록 만들어 주는 prop-types라는 도구가 필요하
+다.
+4. • 다음 액션에서는 도구를 설치해 본다.
+
+
+</details>
+
+<details>
+<summary>정상 설치 여부 확인</summary>
+
+1. Package.json 파일을 열어 dependencies 키에 있는 값을 살펴보자
+2. Prop-types가 등록되어 있으면 설치가 정상적으로 된 것이다
+3. Prop-types는 컴포넌트가 전달받은 props가 원하는 값인지 확인해 주는 역할을 한다
+4. prop-types를 통해 미리 ‘Food 컴포넌트는 반드시 picture props가 전달되야 한다’고 정의할 수 있
+다.
+
+
+</details>
+
+<details>
+<summary> prop-types 적용하기</summary>
+
+1. import PropTypes from ‘prop-types’; 를 App.js 파일 맨 위에 추가해 주자.
+2. 그리고 ration props를 Food 컴포넌트에 전달하자. 
+3. 아직 prop-types를 적용한 상태는 아니다.
+
+</details>
+
+
+<details>
+<summary>Food.propTypes 작성하기</summary>
+
+1. 이제 prop-types를 적용해 보자.
+2. Food.propType에 객체를 적어 주기만 하면 된다.
+3. 모든 props는 문자열이고 반드시 있어야 한다는 조건을 추가해 보자.
+4. 실행하면 별 문제가 없어 보이지만, 콘솔 탭을 확인해 보면 경고 메시지가 보인다.
+
+</details>
+
+
+<details>
+<summary>Food.propTypes의 rating 키 값 확인하기</summary>
+
+1. isRequired는 필요하다는 뜻 이다.
+2. rating에는 string이라는 자료형이 반드시 필요하다’는 이야기 이다.
+
+
+</details>
+
+<details>
+<summary> prop-types 경고 해결하기</summary>
+
+1. rating: PropTypes.string.isRequired 대신 rating: PropTypes.number.isRequired 로 교체
+2. Console탭을 확인해 보면 prop type 경고 메시지가 사라져 있다
+
+
+</details>
+
+
+<details>
+<summary>다른 종류의 prop-types 경고 해결하기</summary>
+
+1. Picture props의 이름을 image로 바꿔보자.
+2. 화면에 사진이 나오지 않게 된다
+3. Console 탭을 살펴보면 그 이유를 알 수 있다.
+4. Food 컴포넌트에 picture라는 이름의 props가 필요한데, 그 값이 undefined다.
+
+</details>
+
+<details>
+<summary>코드 원래대로 돌려 놓기</summary>
+
+1. 이럴 경우도 props오류가 발생한 다는 생각하며, 오류 메시지를 눈으로 익혀 둔다.
+
+</details>
+
+<details>
+<summary>isRequired의 뜻 살펴보기</summary>
+
+1. rating props는 필수가 아니어도 되는 항목이다.
+2. 다만 값이 전달되는 경우 자료형이 number이기는 해야 한다.
+
+</details>
+
 ##  [09월 15일] 학습내용
 ------
 
