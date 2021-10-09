@@ -1,5 +1,158 @@
 # 전승현 201840132 
 
+##  [10월 06일] 학습내용
+------
+
+<details>
+<summary>axios 설치하기</summary>
+
+1. javascript에서는 영화 데이터를 로딩 할 때 fetch()함수를 사용한다. 
+2. 하지만 이 시간은 javascript시간이 아님으로 그 대신 axios를 사용하도록 한다.
+3. public 폴더에 images폴더를 생성한다
+4. 터미널에서 다음과 같이 입력하여 axios를 설치한다.
+~~~
+> npm install axios
+~~~
+
+
+</details>
+
+<details>
+<summary>  YTS영화 데이터 API 살펴보기</summary>
+
+1. 브라우저 주소창에 yts.lt/api 라고 입력하고, YTS영화 데이터 API 사이트에 접속해 보자.
+2. 앞으로 사용할 API는 'List Movies API'이다.
+3. List Movies를 클릭한다. 로그인 하지 않아도 된다.
+4. API는 특정 주소를 입력하면 그 주소에 맞는 결과를 보내 준다.
+5. 조건도 붙일 수 있도록 제공한다.
+6. 우리는 Endpoint의 가장 위에 있는 주소를 사용한다. 이 주소는 최신 영화 20개에 대한 데이터를 기
+본으로 보내 준다
+
+
+
+</details>
+
+
+<details>
+<summary>영화 목록 데이터 확인해 보기</summary>
+
+1. • 브라우저에서 Endpoint의 주소 중 json으로 끝나는 주소를 입력한다.
+2. • min스타일로 제공되기 때문에 보기가 아주 불편하다.
+
+
+
+</details>
+
+<details>
+<summary> JSON Viewer 확장 도구 설치하기</summary>
+
+1. JSON Viewer라는 확장 도구를 설치하면 정상적으로 볼 수 있다.
+2. 크롬 웹스토어에서 JSON Viewer라고 검색하고 설치한다
+
+
+
+</details>
+
+<details>
+<summary>노마드 코더 영화 API를 사용하자</summary>
+
+1. API GitHub에 접속해 보면 README.md 소개 글에 다음과 같은 내용이 있다
+2. YTS의 endpoint /list_movies.json을 사용하려면 yts-proxy.now.sh에 /list_movies.json을 붙이
+면 된다.
+3. 만일 YTS의 다른 endpoint와 함께 노마드 코더 영화 API를 사용하려면,
+yts-proxy.now.sh에 endpoint를 붙이면 된다.
+
+</details>
+
+
+<details>
+<summary>영화 정보 더 자세히 살펴보기</summary>
+
+1. 영화정보를 좀더 자세히 살펴보자
+2. 주소창에 yts-proxy.now.sh/movie_details.json라고 접속하면 아무 것도 출력되지 않는다.
+3. API가 movie_id라는 조건을 요구하기 때문이다.
+
+
+</details>
+
+
+<details>
+<summary>영화 정보를 더 자세히 보기 위해 조건 추가하기</summary>
+
+1. yts.mx/api#mivie_details에 접속하면
+movie_details Endpoint는 movie_id가 필수임을 알
+수 있다.
+2. 즉 yts-proxy.now.sh/list_movies.json에 movie_id를
+추가해야 한다.
+3. Example에 있는 주소를 보면 movie_id를 어떻게 추가
+하는지 알 수 있다.
+
+
+</details>
+
+<details>
+<summary> movie_id가 10인 영화 정보 살펴보기</summary>
+
+1. yts-proxy.now.sh/list_movies.json?movie_id=10 이하고 접속하면 아이디가 10인 영화의 자세
+한 정보를 볼 수 있다.
+
+
+
+</details>
+
+
+<details>
+<summary>노마드 코더 영화 API를 영화 앱에서 호출하기</summary>
+
+1. API를 사용하려면 axios를 import한 다음, componentDidMount()함수에서 axios로 API를 호출
+하면 된다
+2. axios.get()함수의 인자에 URL을 전달하여 API를 호출했다
+3. setTimeout은 이제 사용할 필요가 없으니 삭제한다.
+4. 실행해 보면 여전히 Loading... 이라고만 나온다.
+
+</details>
+
+<details>
+<summary>axios의 동작 확인해 보기</summary>
+
+1. axios가 동작하는지 살펴보자.
+2. network탭을 열고 브라우저 새로고침(Ctrl+F5)을 한다
+3. name이라는 항목에 list_movies.json이라고 나온 부분이 바로 axios가 API를 호출해서 발생한 것
+이다.
+
+</details>
+
+<details>
+<summary>getMovies()함수 기다린 다음, axios.get() 함수가 반환한 데이터 잡기</summary>
+
+1. getMovies()함수를 만들고, 이 함수 안에서 axios.get()이 실행하도록 한다.
+2. axios.get()의 return값은 movies에 저장한다. 
+3. componentDidMount()함수가 실행되면 this.getMovie()가 실행된다
+4. 이때 자바스크립트에게 getMovies()함수는 시간이 필요하다는 것을 알려야 하는데 이때 사용되는
+것이 async, await 이다.
+
+</details>
+
+
+<details>
+<summary> getMovies()에 async 붙이고, axios.get()에 await붙이기</summary>
+
+1. 시간이 필요하다는 것을 알리기 위해서는 async, await 키워드가 필요하다. 
+2. 자바스크립트에게 시간이 필요하다는 것을 알리려면 async를 ()앞에 붙이고,
+3. 실제 시간이 필요한 대상인 axios.get()함수 에는 await을 붙인다.
+
+
+</details>
+
+<details>
+<summary>  console.log() 함수로 영화 데이터 출력해 보기 </summary>
+
+1. 앞에서 우리가 작업한 결과로 API가 보내준 데이터는 movies에 들어가 있을 것이다. 
+2. console을 통해 출력해 보자.
+
+
+</details>
+
 ##  [09월 29일] 학습내용
 ------
 
@@ -143,7 +296,8 @@ import React from 'react';
 `React.`을 생략할 수 있다.
 
 </details>
-##  [09월 15일] 학습내용
+
+## [09월 15일] 학습내용
 ------
 
 <details>
