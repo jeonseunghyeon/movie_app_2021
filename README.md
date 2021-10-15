@@ -1,5 +1,175 @@
 # 전승현 201840132 
 
+##  [10월 13일] 학습내용
+------
+
+<details>
+<summary> Movie 컴포넌트 만들기</summary>
+
+1. src폴더에 Movie.js 파일을 새로 만든다.
+2. 컴포넌트의 기본 골격을 작성한다
+3. Movie 컴포넌트는 state가 필요하지 않으므로 클래스형 컴포넌트가 아닌, 함수형 컴포넌트로 작성
+하기로 한다.
+4. Movie에 넘어와야 하는 영화 데이터를 정의하고, 관리하기 위해 prop-types를 사용한다.
+~~~ javascript
+> import PropTypes from "prop-types";
+
+function Movie() {
+    return <h1></h1>;
+}
+
+Movie.propTypes = {};
+
+export default Movie;
+~~~
+
+
+</details>
+
+<details>
+<summary>  Movie.propTypes 작성하기</summary>
+
+1. 먼저 id를 Movie.propTypes를 추가 한다. 
+2. id의 자료형은 Number이고, 반드시 있어야 함으로 PropType.number.isRequired로 작성한다.
+3. year, title, summary, poster를 각각 Movie.propTypes에 추가 한다. 
+4. 여기서 poster props는 영화 포스터 이미지 주소를 저장하기 위한 것이다
+
+~~~ javascript
+Movie.propTypes = {
+  year: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+~~~
+
+
+
+
+
+</details>
+
+
+<details>
+<summary>axios.get() 수정하기</summary>
+
+~~~ javascript
+getMovie = async () => {
+    //movies.data.data.movies
+    const {
+      data: {
+        data: { movies },
+      },
+    } = await axios.get("https://yts-proxy.now.sh/list_movies.json?_by=rating");
+
+~~~
+
+
+</details>
+
+<details>
+<summary> JSON Viewer 확장 도구 설치하기</summary>
+
+1. JSON Viewer라는 확장 도구를 설치하면 정상적으로 볼 수 있다.
+2. 크롬 웹스토어에서 JSON Viewer라고 검색하고 설치한다
+
+
+
+</details>
+
+<details>
+<summary> Movie 컴포넌트에서 props를 추가하고 출력해 보기</summary>
+
+1. Movie 컴포넌트에서 id, title, year, summary, poster props를 받아 출력할 수 있도록 수정한다.
+2. App 컴포넌트에서 Movie컴포넌트를 그릴 때 title만 우선 출력하도록 만들어 보자.
+3. 음식 앱을 만들 때 컴포넌트를 map() 함수로 출력했던 것과 같이 코딩한다.
+
+
+~~~ javascript
+function Movie({ id, year, title, summary, poster }) {
+    return <h4>{title}</h4>;
+}
+
+~~~
+</details>
+
+
+<details>
+<summary> App 컴포넌트에서 Movie컴포넌트 그리기</summary>
+
+1. We are ready를 출력하고 있는 자리, 즉 로딩이 완료 되면 실행되는 자리에 movies.map()을 사용
+한다.
+2. map() 함수의 첫 번째 인자로 컴포넌트를 반환하는 함수를 전달하면 된다.
+~~~ javascript
+render() {
+    const { isLoading, movies} = this.state;
+    return <div>{isLoading ? 'Loading..' : movies.map()}</div>;
+}
+
+~~~
+
+
+
+</details>
+
+
+<details>
+<summary>. map() 함수에 컴포넌트를 반환하는 함수 전달하기</summary>
+
+1. 우선 console탭에 영화 데이터를 출력한 다음, 아무것도 반환하지 않는 함수를 전달해 본다
+~~~ javascript
+{isLoading
+? 'Loading...'
+: movies.map((movie)=>{
+    console.log(movie)
+    return
+})}
+
+~~~
+
+</details>
+
+<details>
+<summary> Movie 컴포넌트를 반환하도록 movies.map() 수정하기</summary>
+
+1. App.js에 Movie 컴포넌트를 import한 다음, movies.map()에 전달한 함수가 <Movie />를 반환하
+도록 한다.
+~~~ javascript
+import Moive from './Movie'
+
+~~~
+
+</details>
+
+
+<details>
+<summary>액션14. Movie컴포넌트에 props 전달하기</summary>
+
+1. id, year, title, summary, poster를 isRequired로 설정했기 때문에 props를 모두 전달해야 한다.
+2. • 단, poster props의 경우 키 이름이 medium_cover_image이므로 movies.poster가 아니라
+movies.medium_cover_image라고 작성한다.
+3. setTimeout은 이제 사용할 필요가 없으니 삭제한다.
+4. App을 실행해 보면 영화 제목이 나오는 것을 확인할 수 있다.
+
+~~~ javascript
+  <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  year={movie.year}
+                  title={movie.title}
+                  summary={movie.summary}
+                  poster={movie.medium_cover_image}
+
+
+~~~
+</details>
+
+
+
+
+
 ##  [10월 06일] 학습내용
 ------
 
