@@ -1,5 +1,105 @@
 # 전승현 201840132 
 
+
+
+##  [10월 29일] 학습내용
+------
+
+<details>
+<summary> react-router-dom 설치하고 프로젝트 폴더 정리하기</summary>
+
+1. 간단한 메뉴를 추가한다.
+2. 메뉴를 클릭하면 화면이 이동해야 하는데, 이때 필요한 것이 라우터이다.
+3. • 라우터는 react-router-dom패키지를 이용하면 된다.
+4.  react-router-dom 설치하기
+~~~ javascript
+> npm install react-router-dom
+~~~
+
+
+</details>
+
+<details>
+<summary>   components 폴더에 Movie 컴포넌트 옮기기</summary>
+
+1. src/components 폴더 만들고 Movie컴포넌트 이동
+
+</details>
+
+
+<details>
+<summary> routes 폴더에 라우터가 보여줄 화면 만들기</summary>
+
+1. • src/routes 폴더 만들고 Home.js와 About.js 파일 생성
+
+
+</details>
+
+<details>
+<summary> Home.js 수정하기</summary>
+
+1. App.js내용을 Home.js로 복사하고 컴포넌트 이름을 Home으로 수정한다
+2. Home.css를 생성하고 Home.js에 import한다.
+
+
+
+</details>
+
+<details>
+<summary> 라우터 만들어 보기</summary>
+
+1. 라우터는 사용자가 입력한 URL을 통해 특정 컴포넌트를 불러준다.
+2. React-router-dom은 여러 종류의 라우터를 제공하는데, 여기서는 HashRouter와 Route컴포넌트
+를 사용한다.
+3. App.js에 HashRouter와 Route 컴포넌트 import하고 적용한다.
+
+
+</details>
+
+
+<details>
+<summary> HashRouter와 Router컴포넌트</summary>
+
+1. HashRouter와 Router컴포넌트 import한다
+2. HashRouter컴포넌트가 Route컴포넌트를 감싸 반환하도록 App.js를 수정한다
+3. 그리고 Home을 import 했던 코드는 잠시 지운다.
+4. Route에는 2가지 props를 전달할 수 있다. 하나는 URL을 위한 path props고, 또 하나는 URL에 맞
+는 컴포넌트를 불러 주기 위한 component props이다.
+
+
+
+
+</details>
+
+
+<details>
+<summary> Route 컴포넌트에 path, component props 추가하기</summary>
+
+1. About 컴포넌트를 import 한다.
+2. Path, component props에 URL과 About 컴포넌트를 전달한다.
+
+</details>
+
+<details>
+<summary> . 라우터 테스트해 보기</summary>
+
+1. • localhost:3000/#에 path props로 전달했던 값 /about을 붙여 다시 접속해 보자.
+2. URL은 localhost:3000/#/about이고, 액션3에서 작성했던 내용이 출력된다.
+3. 이것은 Route 컴포넌트에 전달한 path props를 보고 component props에 지정한 About 컴포넌
+트를 그려 준 것이다. 
+
+</details>
+
+
+<details>
+<summary> Home 컴포넌트를 위한 Route컴포넌트 추가하기</summary>
+
+1. App 컴포넌트에 Home 컴포넌트를 import하고, 또 다른 Route 컴포넌트를 추가 한다
+2. path props를 “/”으로 입력한 이유는 localhost:3000에 접속하면 기본으로 보여줄 컴포넌트를
+Home 컴포넌트로 하기 위해서이다.
+
+</details>
+
 ##  [10월 13일] 학습내용
 ------
 
