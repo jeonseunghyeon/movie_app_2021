@@ -1,8 +1,15 @@
 import PropTypes from 'prop-types'
 import './Movie.css'
+import {Link} from 'react-router-dom'
 function Movie({year, title, summary, poster, genres}) {
     return(
         <div className='movie'>
+            <Link
+                to={{
+                    pathName: '/movie-detail',
+                    state: {year, title, summary, poster, genres}
+                }}
+            />
          <img src={poster} alt={title} title={title}/>
          <div className = 'movie-data'>
              <h3 className = 'movie-title'>{title}</h3>
@@ -26,4 +33,4 @@ Movie.propTypes = {
     genres: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
-export default Movie
+export default Movie;

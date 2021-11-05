@@ -2,7 +2,114 @@
 
 
 
-##  [10월 29일] 학습내용
+##  [11월 03일] 학습내용
+------
+
+<details>
+<summary> 라우터 테스트하고 문제 찾아보기</summary>
+
+1. localhost:3000에 접속하면 주소 뒤에 자동으로 /#/가 붙으면서 영화 앱 화면이 나타난다.
+2. 이번에는 /about에도 접속해 본다. 당연히 About 컴포넌트만 출력되야 함에도, Movie 컴포넌트가
+함께 출력된다.
+3. 이제부터 이 문제를 해결해 보도록 한다.
+
+
+</details>
+
+<details>
+<summary>  라우터 자세히 살펴보기</summary>
+
+1. • App 컴포넌트에 라우터를 다음과 같이 구성한다
+~~~javascript
+  <HashRouter>
+        <Navigation />
+        <Route path = '/' exact={true} component={Home} />
+        <Route path = '/about' component={About} />
+        <Route path = '/movie-detale' componente={Detail} />
+    </HashRouter>
+~~~
+
+</details>
+
+
+<details>
+<summary> 라우터 다시 테스트해 보기</summary>
+
+1. /home에 접속하면 문제가 없어 보이지만, /home/introduction에 접속하면 Home이 함께 나오는
+문제는 여전하다.
+2. 라우터는 사용자가 /home/introduction에 접속하면 /, /home, /home/introduction 순서로
+path props가 있는지를 찾는다. 그런데 이들 모두가 path props를 갖고 있기 때문에 introduction
+에 접속하면 이 모든 것이 보이는 것이다.
+3. • 이와 같은 이유로 /about에 접속하면 /, /about 순서로 path props를 찾기 때문에 Home과 About
+컴포넌트 모두 출력되는 것이었다.
+
+
+</details>
+
+<details>
+<summary> App 다시 원래대로 돌리기</summary>
+
+1. Route 컴포넌트에 exact props를 추가하면 해결할 수 있다
+2. exact props는 Route 컴포넌트가 path props와 정확하게 일치하는 URL에만 반응하도록 한다.
+
+
+
+</details>
+
+<details>
+<summary> About.css 작성하기</summary>
+
+1. route 폴더에 About.css파일을 생성한고, css 코드를 작성한다. (kabab case사용하기)
+2. About.js에 About.css를 import하고, 적용할 수 있도록 내용도 수정한다
+
+
+
+</details>
+
+
+<details>
+<summary>  Navigation 컴포넌트 만들기</summary>
+
+1.  Home과 About이라는 2개의 버튼을 만들고, 각각의 버튼을 눌렸을 때 해당 화면이 보이도록 할 것
+이다
+2. 먼저 components폴더에 Navigation.js파일을 만들고, 2개의 a 태그를 반환하도록 작성한다
+
+
+
+</details>
+
+
+<details>
+<summary> Navigation 컴포넌트 App 컴포넌트에 포함 시키기</summary>
+
+1. App컴포넌트에 Navigation을 import시키고, <HashRoute>에서 불러오게 한다.
+2. 앱을 실행하면 Navigation이 출력되는 것을 확인할 수 있다
+3. 하지만 동작은 잘 될까? 다음 액션에서 확인해 보자.
+
+</details>
+
+<details>
+<summary> . Home 링크 눌러 보기</summary>
+
+1. Home링크를 눌러본다.
+2. • 링크를 클릭할 때마다 리액트가 죽고, 새 페이지가 열리는 문제가 발생한다.
+3. • 원인은 a 태그의 href속성이 페이지 전체를 다시 그리는 성질을 갖고 있기 때문이다.
+4. 이대로 라면 필요한 부분만 다시 그려주는 리액트를 써야할 이유가 없다. 
+5. 이 문제를 해결하려면 react-router-dom의 Link 컴포넌트를 사용하면 된다.
+
+</details>
+
+
+<details>
+<summary> a 태그 Link 컴포넌트로 바꾸기</summary>
+
+1. Navigation 컴포넌트에 Link 컴포넌트를 import하고 a 태그를 Link 컴포넌트로 바꾼다. • href속성은 to로 수정한다.
+2. 앱을 실행하고 링크를 클릭해 본다. 페이지 전체 고침 문제가 해결된 것을 확인할 수 있다
+
+</details>
+
+
+##  [10월 27일] 학습내용
 ------
 
 <details>
