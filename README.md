@@ -2,6 +2,112 @@
 
 
 
+##  [11월 10일] 학습내용
+------
+
+<details>
+<summary>컴포넌트 설치 오류 등 원인 규명이 되지 안은 오류가 있을 경우 </summary>
+
+1. npm cache clean --force
+2. npm rebuild
+3. rm -rf node_modules
+4. npm install
+
+
+</details>
+
+<details>
+<summary>  package.json과 package-lock.json 차이</summary>
+
+1. package.json은 패기지 의존성 관리 파일이다
+2. 협업을 할 때는 팀원들 각자의 컴퓨터에 같은 패키지들을 설치해서 동일한 개발환경을 구성해야 하는
+게 이때 사용하는 것이 package.json이다.
+3. 물론 개인의 프로젝트를 재 생성하거나, 이번의 경우처럼 오류가 있을 때도 유용하게 사용된다
+4. 하지만 간혹 팀원들 중 버전이 다르게 설치되는 경우 앱이 동작하지 않는 경우도 있어 난감할 때가 생
+긴다. 이때는 다음과 같이 확인하고 조치한다. 결국 앞서 소개한 방법으로 해결하는 것이다. 
+5.  package.json의 경우는 version range를 사용한다. "express": "~4.16.1“
+6. package-lock.json은 package.json 이 변경될 때 마다 업데이트 되는 것으로 좀더 정확한 버전이
+기록되어 있다.
+
+
+</details>
+
+
+<details>
+<summary>  package.json과 package-lock.json 차이(2)</summary>
+
+1. npm install 을 진행하더라도 서로 다른 node_modules트리를 생성하는 경우가 발생한다. 
+2. 이것은 npm의 버전이 다른 경우, npm 알고리즘의 차이가 나기 때문이다. 
+3. 그래서 팀원 간의 문제가 발행하면 npm버전부터 확인한다.
+4. 그리고 package-lock.json파일이 있으면 npm install명령은 package.json 을 사용하지 않고
+package-lock.json 을 사용하여 node-modules 를 생성한다.
+
+
+</details>
+
+<details>
+<summary> App 다시 원래대로 돌리기</summary>
+
+1. Route 컴포넌트에 exact props를 추가하면 해결할 수 있다
+2. exact props는 Route 컴포넌트가 path props와 정확하게 일치하는 URL에만 반응하도록 한다.
+
+
+
+</details>
+
+<details>
+<summary> About.css 작성하기</summary>
+
+1. route 폴더에 About.css파일을 생성한고, css 코드를 작성한다. (kabab case사용하기)
+2. About.js에 About.css를 import하고, 적용할 수 있도록 내용도 수정한다
+
+
+
+</details>
+
+
+<details>
+<summary>  Navigation 컴포넌트 만들기</summary>
+
+1.  Home과 About이라는 2개의 버튼을 만들고, 각각의 버튼을 눌렸을 때 해당 화면이 보이도록 할 것
+이다
+2. 먼저 components폴더에 Navigation.js파일을 만들고, 2개의 a 태그를 반환하도록 작성한다
+
+
+
+</details>
+
+
+<details>
+<summary> Navigation 컴포넌트 App 컴포넌트에 포함 시키기</summary>
+
+1. App컴포넌트에 Navigation을 import시키고, <HashRoute>에서 불러오게 한다.
+2. 앱을 실행하면 Navigation이 출력되는 것을 확인할 수 있다
+3. 하지만 동작은 잘 될까? 다음 액션에서 확인해 보자.
+
+</details>
+
+<details>
+<summary> . Home 링크 눌러 보기</summary>
+
+1. Home링크를 눌러본다.
+2. • 링크를 클릭할 때마다 리액트가 죽고, 새 페이지가 열리는 문제가 발생한다.
+3. • 원인은 a 태그의 href속성이 페이지 전체를 다시 그리는 성질을 갖고 있기 때문이다.
+4. 이대로 라면 필요한 부분만 다시 그려주는 리액트를 써야할 이유가 없다. 
+5. 이 문제를 해결하려면 react-router-dom의 Link 컴포넌트를 사용하면 된다.
+
+</details>
+
+
+<details>
+<summary> a 태그 Link 컴포넌트로 바꾸기</summary>
+
+1. Navigation 컴포넌트에 Link 컴포넌트를 import하고 a 태그를 Link 컴포넌트로 바꾼다. • href속성은 to로 수정한다.
+2. 앱을 실행하고 링크를 클릭해 본다. 페이지 전체 고침 문제가 해결된 것을 확인할 수 있다
+
+</details>
+
+
 ##  [11월 03일] 학습내용
 ------
 
