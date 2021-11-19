@@ -1,5 +1,149 @@
 # 전승현 201840132 
 
+##  [11월 17일] 학습내용
+------
+
+<details>
+<summary>React의 특징
+ </summary>
+
+1. 상호작용이 많은 UI개발에 적합하다.
+2. 컴포넌트 로직은 JavaScript로 작성한다.
+3. 캡슐화된 컴포넌트로 개발되어 재사용이 용이하다.
+4. DOM과는 별개로 상태를 관리할 수 있다.
+5. 기술 스택의 나머지 부분에는 관여하지 않는다.
+6. 기존 코드와 별개로 개발이 가능하다.
+7. React Native를 이용하면 모바일 앱도 만들 수 있다.
+
+</details>
+
+<details>
+<summary>  첫 번째 예제 - 간단한 컴포넌트</summary>
+
+~~~javascript
+class HelloMessage extends React.Component {
+  render() {
+    return (
+      <div>
+        Hello {this.props.name}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <HelloMessage name="Taylor" />,
+  document.getElementById('hello-example')
+);
+
+~~~
+
+
+</details>
+
+
+<details>
+<summary>  두 번째 예제 - state가 포함된 component
+</summary>
+
+~~~javascript
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { seconds: 0 };
+  }
+
+  tick() {
+    this.setState(state => ({
+      seconds: state.seconds + 1
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
+
+~~~
+
+</details>
+
+<details>
+<summary> 세 번째 예제 - Todo List</summary>
+
+~~~javascript
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [], text: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="new-todo">
+            What needs to be done?
+          </label>
+          <input
+            id="new-todo"
+            onChange={this.handleChange}
+            value={this.state.text}
+          />
+          <button>
+            Add #{this.state.items.length + 1}
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  handleChange(e) {
+    this.setState({ text: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.state.text.length === 0) {
+      return;
+    }
+    const newItem = {
+      text: this.state.text,
+      id: Date.now()
+    };
+    this.setState(state => ({
+      items: state.items.concat(newItem),
+      text: ''
+    }));
+  }
+}
+
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
+}
+
+ReactDOM.render(
+  <TodoApp />,
+  document.getElementById('todos-example')
+);
+
+~~~
+
+
+</details>
+
+
 
 
 ##  [11월 10일] 학습내용
