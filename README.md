@@ -1,5 +1,112 @@
 # 전승현 201840132 
 
+##  [11월 24일] 학습내용
+------
+
+<details>
+<summary>handleSubmit(e)에서 e.preventDefault() 메소드를 사
+용하는 이유는?
+ </summary>
+
+1.  stae.text의 길이가 0이면 아무 것도 반환하지 않는다
+2. 0이 아니면 newItem에 입력 받은 text와 현재 시간을 저장한다.
+3. 현재 시간은 왜 저장하는 걸까? 조금 생각해 보자.
+4.  이렇게 저장된 newItem을 state의 item배열에 저장하고, text를 비운다
+
+
+</details>
+
+<details>
+<summary> TodoList Component</summary>
+
+1.  TodoList class를 생성한다.
+2. ul 안에 추가된 task를 li로 출력한다.
+3. 앞서 저장한 id값은 key props로 사용한다.
+4. 마지막으로 ReactDOM으로 랜더링만 하면 끝난다.
+
+
+
+
+</details>
+
+
+<details>
+<summary>  creat-react-app으로, Remarkable 사용하기
+</summary>
+
+
+1. creat-react-app으로 markdown-editor 프로젝트를 생성한다.
+2. 정상 동작을 확인하다.
+3. App.js에 있는 필요없는 코드를 삭제한다.
+4. App.js에 문서의 코드를 복사해 넣는다.
+5. component의 이름을 App으로 수정한다.
+6. rendering은 index.js에 위임한다.
+7. Remarkable을 설치한다.
+8. React와 Remarkable을 import한다.
+9. 동작이 되는지 확인한다.
+
+~~~javascript
+class MarkdownEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.md = new Remarkable();
+    this.handleChange = this.handleChange.bind(this);
+    this.state = { value: 'Hello, **world**!' };
+  }
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
+  getRawMarkup() {
+    return { __html: this.md.render(this.state.value) };
+  }
+
+  render() {
+    return (
+      <div className="MarkdownEditor">
+        <h3>Input</h3>
+        <label htmlFor="markdown-content">
+          Enter some markdown
+        </label>
+        <textarea
+          id="markdown-content"
+          onChange={this.handleChange}
+          defaultValue={this.state.value}
+        />
+        <h3>Output</h3>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={this.getRawMarkup()}
+        />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <MarkdownEditor />,
+  document.getElementById('markdown-example')
+);
+
+~~~
+
+</details>
+
+<details>
+<summary> code review</summary>
+
+1. 외부 컴포넌트를 사용하기 위해 생성자 내에 객체를 생성한다.
+2. state를 이용하여 Remarkable에 변환할 마크다운 문장을 제출한다.
+3. 글이 입력되면 handleChange 이벤트를 사용하여 state의 value를 갱신한다.
+4. getRawMarkup() 메소드를 통해 html을 반환 받는다.
+
+
+
+</details>
+
+
+
 ##  [11월 17일] 학습내용
 ------
 
